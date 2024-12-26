@@ -27,6 +27,13 @@ else
   GITIGNORE_CONTENT=""
 fi
 
+# Ask if the repositories should be public or private
+read -rp "Do you want the repositories to be public or private? (public/private): " REPO_VISIBILITY
+if [[ "$REPO_VISIBILITY" != "public" && "$REPO_VISIBILITY" != "private" ]]; then
+  echo "Invalid choice. Defaulting to private."
+  REPO_VISIBILITY="private"
+fi
+
 # Navigate to the base directory
 cd "$BASE_DIR" || { echo "The directory $BASE_DIR does not exist. Exiting."; exit 1; }
 
@@ -65,10 +72,8 @@ for dir in */; do
     # Extract the folder name as the repository name
     REPO_NAME=$(basename "$dir")
 
-    # Add the remote repository and push
-    git remote add origin "https://github.com/$GITHUB_USER/$REPO_NAME.git"
-    git branch -M main
-    git push -u origin main --force
+    # Create the repository on GitHub
+    gh repo create "$GITHUB_USER/$REPO_NAME" --$REPO_VISIBILITY --source=. --remote=origin --push
 
     # Return to the base directory
     cd "$BASE_DIR" || exit
