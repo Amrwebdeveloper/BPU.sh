@@ -32,7 +32,7 @@ If you have the **"Keep my email address private"** option enabled on GitHub, yo
 
 1. Go to your [GitHub Email Settings](https://github.com/settings/emails).
 2. Under the **"Email address privacy"** section, check for your `no-reply` email address.
- It will look like: 12345678+username@users.noreply.github.com
+    It will look like: `12345678+username@users.noreply.github.com`
 3. Use this email address when prompted by the script.
 
 ---
