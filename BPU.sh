@@ -28,7 +28,19 @@ else
 fi
 
 # Ask if the repositories should be public or private
-read -rp "Do you want the repositories to be public or private? (public/private): " REPO_VISIBILITY
+echo "Do you want the repositories to be public or private?"
+echo "1. Public"
+echo "2. Private"
+read -rp "Enter your choice (1/2): " REPO_VISIBILITY_CHOICE
+
+if [[ "$REPO_VISIBILITY_CHOICE" == "1" ]]; then
+  REPO_VISIBILITY="public"
+elif [[ "$REPO_VISIBILITY_CHOICE" == "2" ]]; then
+  REPO_VISIBILITY="private"
+else
+  echo "Invalid choice. Defaulting to private."
+  REPO_VISIBILITY="private"
+fi
 if [[ "$REPO_VISIBILITY" != "public" && "$REPO_VISIBILITY" != "private" ]]; then
   echo "Invalid choice. Defaulting to private."
   REPO_VISIBILITY="private"
