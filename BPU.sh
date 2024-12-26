@@ -82,7 +82,7 @@ for dir in */; do
     git commit -m "Initial commit for $dir"
 
     # Extract the folder name as the repository name
-    REPO_NAME=$(basename "$dir")
+    REPO_NAME=$(basename "$dir" | tr ' ' '-' | tr -cd '[:alnum:]-')
 
     # Create the repository on GitHub
     gh repo create "$GITHUB_USER/$REPO_NAME" --$REPO_VISIBILITY --source=. --remote=origin --push
