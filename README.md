@@ -40,7 +40,7 @@ If you have the **"Keep my email address private"** option enabled on GitHub, yo
 ## Usage
 
 1. Clone or download this repository.
-2. Open your terminal and navigate to the directory containing `upload_bulk_projects.sh`.
+2. Open your terminal and navigate to the directory containing `BPU.sh`.
 3. Make the script executable:
 ```bash
-chmod +x upload_bulk_projects.sh
+chmod +x BPU.sh
